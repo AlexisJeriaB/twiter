@@ -1,17 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
-
-<div>
-
-  <%= form_with url: tweets_path, method: :get do |form| %>
-    <%= form.text_field :query_text, placeholder: ('Escribe tu busqueda'), value: params[:query_text]%>
-  <% end %>
- 
+<div class="text-center">
+  <h1>Tweets</h1>
 </div>
 
+<%= render "form", tweet: @tweet %>
+
+
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
+  <% @tweets.reverse_each do |tweet| %>
     <%= render tweet %>
     <p>
       <%= link_to "Show this tweet", tweet %>
@@ -19,7 +16,6 @@
   <% end %>
 </div>
 
-<%= link_to "New tweet", new_tweet_path %>
 
 <div>
 <%= raw pagy_nav(@pagy) %>
