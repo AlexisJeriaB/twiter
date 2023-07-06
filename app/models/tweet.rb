@@ -6,7 +6,7 @@ class Tweet < ApplicationRecord
     include PgSearch::Model
 
     
-    Pagy::DEFAULT[:items] = 10
+    # Pagy::DEFAULT[:items] = 10
 
 
     

@@ -5,8 +5,11 @@ class TweetsController < ApplicationController
   # GET /tweets or /tweets.json
   def index
 
-    @pagy, @tweets = pagy(Tweet.all)
+    @pagy, @tweets = pagy(Tweet.all.order(created_at: :desc))
   
+    pagy = Pagy.new(count: 100, page: 100, overflow: :last_page)
+
+
     
 
     if params[:query_text].present?
